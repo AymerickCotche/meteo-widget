@@ -1,0 +1,22 @@
+.widget-meteo {
+  width: 600px;
+  
+  &__infos {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 2em 3em;
+    background-color: rgba(255,255,255,.5);
+    filter: drop-shadow(10px 10px 20px rgba(18, 52, 86, 0.5));
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5em;
+    color: white;
+  }
+  &__city, &__temp {
+    font-size: 3em;
+  }
+  &__desc {
+    font-size: 1.5em;
+    opacity: 0.7;
+  }
+}
