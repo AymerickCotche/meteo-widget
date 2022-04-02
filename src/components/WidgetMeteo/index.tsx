@@ -5,7 +5,6 @@ import axios from 'axios';
 import WidgetForm from './WidgetForm';
 import './styles.scss';
 
-const apiKey = process.env.REACT_APP_API_KEY;
 type CounterProps = {
   defaultCity: string
 }
@@ -16,9 +15,11 @@ function WidgetMeteo({defaultCity}: CounterProps) {
   const [temp, setTemp] = useState('--');
 
   useEffect(() => {
+    const apiKey = process.env.REACT_APP_API_KEY;
+    const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
     async function getMeteo (cityName: string = 'Paris') {
       try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric&lang=FR`);
+        const response = await axios.get(`${apiBaseUrl}?q=${cityName}&appid=${apiKey}&units=metric&lang=FR`);
         const result = await response.data;
         setDesc(result.weather[0].description);
         setTemp(result.main.temp.toFixed());
